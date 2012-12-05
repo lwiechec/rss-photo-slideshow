@@ -20,6 +20,9 @@ Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
         padding: 5px;
       }
     </style>
+    <style type="text/css">
+     body { background-color: black; }
+    </style>
     <script type="text/javascript">
     /*
     *  How to make a slideshow with a photo feed using our custom control.
@@ -29,7 +32,10 @@ Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
 
     google.load("feeds", "1");
 
-    function OnLoad() {
+    function OnLoad() {      
+      //resize window
+      resizeTo(700,950);
+      
       var feed = "http://feeds.feedburner.com/ffffound/everyone";
 
       var options = {
