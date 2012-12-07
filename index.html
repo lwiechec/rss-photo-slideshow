@@ -20,7 +20,6 @@ Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
         margin-bottom: 40px;
         padding: 5px;
       }
-
       body { background-color: black; color: white; }
       #gslideshow { color: white; }
     </style>
@@ -32,10 +31,7 @@ Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
       // it will hold ref to slideshow
       var ss;
 
-      function update_slideshow(ss, newfeed) {
-          ss = new GFslideShow(newfeed, "slideshow", options)
-      }
-
+                // slideshow options
       var options = {
           numResults: 200,
           displayTime: 2000,
@@ -45,9 +41,19 @@ Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
           fullControlPanel : true
       };
 
+      function start_slideshow(newfeed) {
+          return new GFslideShow(newfeed, "slideshow", options);
+      }
+
+      function reinit_slideshow(newfeed) {
+          ss = start_slideshow(newfeed);
+      }
+
       function OnLoad() {
-          var feed = "http://feeds.feedburner.com/ffffound/everyone";
-          ss = new GFslideShow(feed, "slideshow", options);
+        //resize window
+        resizeTo(700,1050);
+          // by default, start with FFFFOUND! stream
+        ss = reinit_slideshow("http://feeds.feedburner.com/ffffound/everyone");
       }
 
       google.setOnLoadCallback(OnLoad);
@@ -60,11 +66,11 @@ Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
   <div id="select-feeds" class="select-feeds">
     <p>Places:</p>
     <ul class="feeds-list">
-      <li><a href="#" onclick="update_slideshow(ss, 'http://feeds.feedburner.com/ffffound/everyone');">FFFOUND!</a></li>
-      <li><a href="#" onclick="update_slideshow(ss, 'http://api.flickr.com/services/feeds/photos_public.gne?id=56872233@N00&lang=en-us&format=rss_200');">My Flickr</a></li>
-      <li><a href="#" onclick="update_slideshow(ss, 'http://thisisnthappiness.com/rss');">This Isn't Happiness</a></li>
-      <li><a href="#" onclick="update_slideshow(ss, 'http://gaksdesigns.tumblr.com/rss');">Gak Designs</a></li>
-      <li><a href="#" onclick="update_slideshow(ss, 'http://feeds.feedburner.com/thesartorialist');">The Sartorialist</a></li>
+      <li><a href="#" onclick="reinit_slideshow('http://feeds.feedburner.com/ffffound/everyone');">FFFOUND!</a></li>
+      <li><a href="#" onclick="reinit_slideshow('http://api.flickr.com/services/feeds/photos_public.gne?id=56872233@N00&lang=en-us&format=rss_200');">My Flickr</a></li>
+      <li><a href="#" onclick="reinit_slideshow('http://thisisnthappiness.com/rss');">This Isn't Happiness</a></li>
+      <li><a href="#" onclick="reinit_slideshow('http://gaksdesigns.tumblr.com/rss');">Gak Designs</a></li>
+      <li><a href="#" onclick="reinit_slideshow('http://feeds.feedburner.com/thesartorialist');">The Sartorialist</a></li>
     </ul>
   </div>
   </body>
