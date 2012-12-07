@@ -20,41 +20,52 @@ Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
         margin-bottom: 40px;
         padding: 5px;
       }
-    </style>
 
-    <style type="text/css">
-      body { background-color: black; }
+      body { background-color: black; color: white; }
       #gslideshow { color: white; }
     </style>
 
     <script type="text/javascript">
-   /*
-    *  How to make a slideshow with a photo feed using our custom control.
-    *  To see the options, go here or click the docs link in the titlebar:
-    *  http://www.google.com/uds/solutions/slideshow/index.html
-    */
 
-    google.load("feeds", "1");
+      google.load("feeds", "1");
 
-    function OnLoad() {
-      var feed = "http://feeds.feedburner.com/ffffound/everyone";
+      // it will hold ref to slideshow
+      var ss;
+
+      function update_slideshow(ss, newfeed) {
+          ss = new GFslideShow(newfeed, "slideshow", options)
+      }
 
       var options = {
-        numResults:200,
-        displayTime:2000,
-        transistionTime:600,
-        scaleImages:false,
-        thumbnailTag: "content",
-        fullControlPanel : true
+          numResults: 200,
+          displayTime: 2000,
+          transistionTime: 600,
+          scaleImages: false,
+          thumbnailTag: "content",
+          fullControlPanel : true
       };
-      var ss = new GFslideShow(feed, "slideshow", options);
-    }
 
-    google.setOnLoadCallback(OnLoad);
+      function OnLoad() {
+          var feed = "http://feeds.feedburner.com/ffffound/everyone";
+          ss = new GFslideShow(feed, "slideshow", options);
+      }
+
+      google.setOnLoadCallback(OnLoad);
 
     </script>
+
   </head>
   <body style="font-family: Arial, sans-serif;border: 0 none;">
   <div id="slideshow" class="gslideshow"><div class="feed-loading">Loading...</div></div>
+  <div id="select-feeds" class="select-feeds">
+    <p>Places:</p>
+    <ul class="feeds-list">
+      <li><a href="#" onclick="update_slideshow(ss, 'http://feeds.feedburner.com/ffffound/everyone');">FFFOUND!</a></li>
+      <li><a href="#" onclick="update_slideshow(ss, 'http://api.flickr.com/services/feeds/photos_public.gne?id=56872233@N00&lang=en-us&format=rss_200');">My Flickr</a></li>
+      <li><a href="#" onclick="update_slideshow(ss, 'http://thisisnthappiness.com/rss');">This Isn't Happiness</a></li>
+      <li><a href="#" onclick="update_slideshow(ss, 'http://gaksdesigns.tumblr.com/rss');">Gak Designs</a></li>
+      <li><a href="#" onclick="update_slideshow(ss, 'http://feeds.feedburner.com/thesartorialist');">The Sartorialist</a></li>
+    </ul>
+  </div>
   </body>
 </html>
