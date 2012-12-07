@@ -12,16 +12,23 @@ Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
     <script src="http://www.google.com/jsapi" type="text/javascript"></script>
     <script src="http://www.google.com/uds/solutions/slideshow/gfslideshow.js"
             type="text/javascript"></script>
+
     <style type="text/css">
-      #picasaSlideshow {
+      #slideshow {
         width:  600px;
         height: 800px;
         margin-bottom: 40px;
         padding: 5px;
       }
     </style>
+
+    <style type="text/css">
+      body { background-color: black; }
+      #gslideshow { color: white; }
+    </style>
+
     <script type="text/javascript">
-    /*
+   /*
     *  How to make a slideshow with a photo feed using our custom control.
     *  To see the options, go here or click the docs link in the titlebar:
     *  http://www.google.com/uds/solutions/slideshow/index.html
@@ -40,13 +47,14 @@ Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
         thumbnailTag: "content",
         fullControlPanel : true
       };
-      var ss = new GFslideShow(feed, "picasaSlideshow", options);
+      var ss = new GFslideShow(feed, "slideshow", options);
     }
 
     google.setOnLoadCallback(OnLoad);
+
     </script>
   </head>
   <body style="font-family: Arial, sans-serif;border: 0 none;">
-  <div id="picasaSlideshow" class="gslideshow"><div class="feed-loading">Loading...</div></div>
+  <div id="slideshow" class="gslideshow"><div class="feed-loading">Loading...</div></div>
   </body>
 </html>
