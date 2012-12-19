@@ -24,41 +24,7 @@ Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
       #gslideshow { color: white; }
     </style>
 
-    <script type="text/javascript">
-
-      google.load("feeds", "1");
-
-      // it will hold ref to slideshow
-      var ss;
-
-      // slideshow options
-      var options = {
-          numResults: 200,
-          displayTime: 2000,
-          transistionTime: 600,
-          scaleImages: false,
-          thumbnailTag: "content",
-          fullControlPanel : true
-      };
-
-      function start_slideshow(newfeed) {
-          return new GFslideShow(newfeed, "slideshow", options);
-      }
-
-      function reinit_slideshow(newfeed) {
-          ss = start_slideshow(newfeed);
-      }
-
-      function OnLoad() {
-        //resize window
-        resizeTo(700,1050);
-          // by default, start with FFFFOUND! stream
-        ss = reinit_slideshow("http://feeds.feedburner.com/ffffound/everyone");
-      }
-
-      google.setOnLoadCallback(OnLoad);
-
-    </script>
+    <script type="text/javascript" src="slideshow.js"></script>
 
   </head>
   <body style="font-family: Arial, sans-serif;border: 0 none;">
