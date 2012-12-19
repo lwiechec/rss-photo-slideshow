@@ -48,7 +48,20 @@ var options = {
     transistionTime: 600,
     scaleImages: false,
     thumbnailTag: "content",
-    fullControlPanel : true
+    fullControlPanel : true,
+    thumbnailUrlResolver: function(entry) {
+        // the URL to the thumbnail is in entry.content
+        var c = entry.content;
+        var found = c.match(/<img.*>/);
+        if(found == null) {
+            return "/no_image.gif";
+        }
+        var f2 = found[0].match(/src=".*"/);
+        var f3 = f2[0].split("src=\"");
+        var f4 = f3[1].split("\"");
+
+        return f4[0];
+    }
 };
 
 
