@@ -1,3 +1,6 @@
+// for reference: Google AJAX feed Slideshow programming API is here:
+// http://www.google.com/uds/solutions/slideshow/reference.html
+
 // load Google Feeds API
 google.load("feeds", "1");
 
