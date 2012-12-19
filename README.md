@@ -18,6 +18,6 @@ to quickly open another slideshow window with single or multiple feeds.
 2. How to do it
 ===============
 
-The code should be HTML + JavaScript. We can use [Google Feed API](https://developers.google.com/feed/v1) 
-together with [slideshow 'extension'](http://www.google.com/uds/solutions/slideshow/reference.html) 
-that will do the main work. All we should do is to make it look sexy.
+The code should be HTML + JavaScript. We can use [Google Feed API](https://developers.google.com/feed/v1)
+together with [slideshow 'extension'](http://www.google.com/uds/solutions/slideshow/reference.html)
+that will do the main work. All we should do is to make it look nice.
