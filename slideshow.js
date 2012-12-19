@@ -43,16 +43,7 @@ function getCookie(c_name) {
     return undefined;
 }
 
-
-// slideshow options
-var options = {
-    numResults: 200,
-    displayTime: 2000,
-    transistionTime: 600,
-    scaleImages: false,
-    thumbnailTag: "content",
-    fullControlPanel : true,
-    thumbnailUrlResolver: function(entry) {
+function myThumbnailUrlResolver(entry) {
         // the URL to the thumbnail is in entry.content
         var c = entry.content;
         var found = c.match(/<img.*>/);
@@ -63,9 +54,20 @@ var options = {
         var f3 = f2[0].split("src=\"");
         var f4 = f3[1].split("\"");
 
-        return f4[0];
-    }
+        return f4[0];    
+}
+
+// slideshow options
+var options = {
+    numResults: 200,
+    displayTime: 2000,
+    transistionTime: 600,
+    scaleImages: false,
+    thumbnailTag: "content",
+    fullControlPanel : true,
+    thumbnailUrlResolver: myThumbnailUrlResolver
 };
+
 
 
 /**
